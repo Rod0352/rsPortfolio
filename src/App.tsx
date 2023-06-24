@@ -1,8 +1,13 @@
 import { Box, ThemeProvider, Typography, createTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { GreettingText } from "./display/GreetingText";
-import  {SideBar } from "./components/SideBar";
-
+import { SideBar } from "./components/SideBar";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { MainWrapper } from "./display/MainWrapper";
+import { AboutMe } from "./pages/AboutMe";
+import { Education } from "./pages/Education";
+import { Projects } from "./pages/Projects";
+import { Contact } from "./pages/Contact";
 const theme = createTheme({
   breakpoints: {
     values: {
@@ -27,10 +32,7 @@ const theme = createTheme({
 });
 
 function App() {
-  // set timeout to change textDone to true
   const [textDone, setTextDone] = useState(false);
-
-  // set timeout to change textDone to true
   useEffect(() => {
     setTimeout(() => {
       setTextDone(true);
@@ -46,46 +48,42 @@ function App() {
           justifyContent: "center",
         }}
       >
-         <Box
-      sx={{
-        bg: "border-box",
-        border: "1px #ffffff solid",
-        // background: "linear-gradient(225deg, #f0f0f0, #cacaca)",
-        boxShadow:
-          "-5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3)",
-        height: textDone ?  "85vh" :{ xs: "20vh", sm: "30vh", md: "40vh", lg: "45vh", xl: "50vh"} ,
-        transition: "all 0.5s ease",
-        width: textDone ? "69vw" :{ xs: "80vw", sm: "67vw", md: "40vw", lg: "52vw", xl: "56vw"},
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: "26px",
-        alignSelf: "center",
-      }}
-    >
-      {textDone ? (
-        <>
-        <Typography
-        
-          variant= {window.innerWidth > 600 ? "h3" : "h5"}
-          padding="1"
-          sx={{ color: "#fff", fontWeight: 300 ,textShadow: "1px 1px 2px #545151, 0 0 .1em #9c9797, 0 0 0.1em black",}}
+        <Box
+          sx={{
+            bg: "border-box",
+            border: "1px #ffffff solid",
+            boxShadow:
+              "-5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3)",
+            height: textDone
+              ? "85vh"
+              : { xs: "20vh", sm: "30vh", md: "40vh", lg: "45vh", xl: "50vh" },
+            transition: "all 0.5s ease",
+            width: textDone
+              ? "69vw"
+              : { xs: "80vw", sm: "67vw", md: "40vw", lg: "52vw", xl: "56vw" },
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: "26px",
+            alignSelf: "center",
+          }}
         >
-          Next page coming soon...
-        </Typography>
-        <SideBar/>
-        </>
-      ) : (
-        <GreettingText />
-      )}
-    </Box>
-        {/* <Typography
-          variant="h1"
-          padding="1"
-          sx={{ color: "#fff", position: "absolute" }}
-        >
-          The SWE
-        </Typography> */}
+          {textDone ? (
+            <>
+              <BrowserRouter>
+                <Routes>
+                  <Route index element={<AboutMe />} />
+                  <Route path="/education" element={<Education />} />
+                  <Route path="/projects" element={<Projects />} />
+                  <Route path="/contact" element={<Contact />} />
+                </Routes>
+                <SideBar />
+              </BrowserRouter>
+            </>
+          ) : (
+            <GreettingText />
+          )}
+        </Box>
       </Box>
     </ThemeProvider>
   );
