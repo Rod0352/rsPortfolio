@@ -1,13 +1,20 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
+import { createRoot } from "react-dom/client";
 import App from "./App";
-
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const css = `
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Raleway;
+  }
+`;
+const style = document.createElement("style");
+style.appendChild(document.createTextNode(css));
+document.head.appendChild(style);
+  
+const rootElement = document.getElementById("root") as
+  | Element
+  | DocumentFragment;
+const root = createRoot(rootElement);
+root.render(<App />);
