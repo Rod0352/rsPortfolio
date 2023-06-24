@@ -15,7 +15,7 @@ export const GreettingText = () => {
     const textArray = [
       "Hello World!",
       "My name is Rodney",
-      "I am a software engineer",
+      "Im Full Stack Developer",
       "Welcome to my life ...",
     ];
     for (let i = 0; i < textArray.length; i++) {
@@ -36,7 +36,7 @@ export const GreettingText = () => {
       }}
     >
       <Typography
-        variant="h3"
+        variant= {window.innerWidth > 600 ? "h3" : "h6"}
         padding="1"
         sx={{ color: "#fff", fontWeight: 300 ,textShadow: "1px 1px 2px #545151, 0 0 .1em #9c9797, 0 0 0.1em black",}}
       >

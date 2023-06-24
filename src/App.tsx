@@ -1,8 +1,18 @@
 import { Box, ThemeProvider, Typography, createTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { GreettingText } from "./display/GreetingText";
+import  {SideBar } from "./components/SideBar";
 
 const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1200,
+      xl: 1920,
+    },
+  },
   typography: {
     fontFamily: "Raleway",
   },
@@ -43,8 +53,9 @@ function App() {
         // background: "linear-gradient(225deg, #f0f0f0, #cacaca)",
         boxShadow:
           "-5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3)",
-        height: "42vh",
-        width: "53vw",
+        height: textDone ?  "85vh" :{ xs: "20vh", sm: "30vh", md: "40vh", lg: "45vh", xl: "50vh"} ,
+        transition: "all 0.5s ease",
+        width: textDone ? "69vw" :{ xs: "80vw", sm: "67vw", md: "40vw", lg: "52vw", xl: "56vw"},
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -52,16 +63,18 @@ function App() {
         alignSelf: "center",
       }}
     >
-    {/* <GreettingText /> */}
       {textDone ? (
+        <>
         <Typography
         
-          variant="h3"
+          variant= {window.innerWidth > 600 ? "h3" : "h5"}
           padding="1"
           sx={{ color: "#fff", fontWeight: 300 ,textShadow: "1px 1px 2px #545151, 0 0 .1em #9c9797, 0 0 0.1em black",}}
         >
           Next page coming soon...
         </Typography>
+        <SideBar/>
+        </>
       ) : (
         <GreettingText />
       )}
