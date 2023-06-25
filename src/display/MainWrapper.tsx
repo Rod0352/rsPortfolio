@@ -29,6 +29,8 @@ export const MainWrapper = ({ children }: any, textDone: boolean) => {
           alignItems: "center",
           borderRadius: "26px",
           alignSelf: "center",
+          // overflow: "scroll",
+          // display : "block"
         }}
       >
         {children}

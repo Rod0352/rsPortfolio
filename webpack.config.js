@@ -26,11 +26,12 @@ module.exports = {
                 loader: 'ts-loader'
             },
             {
-                test: /\.(jpg|png)$/,
-                use: {
-                  loader: 'url-loader',
-                },
-              },
+                test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                loader: require.resolve('url-loader'),
+                options: {
+                limit: 10000,
+                }
+            }
         ]
     },
     resolve: {
