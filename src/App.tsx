@@ -8,6 +8,7 @@ import { AboutMe } from "./pages/AboutMe";
 import { Education } from "./pages/Education";
 import { Projects } from "./pages/Projects";
 import { Contact } from "./pages/Contact";
+import { slowLetterReveal } from "./utils/staggeringText";
 const theme = createTheme({
   breakpoints: {
     values: {
@@ -20,6 +21,15 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "Raleway",
+  },
+  components: {
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          color: "#10ad30",
+        },
+      },
+    },
   },
   palette: {
     primary: {
@@ -36,7 +46,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setTextDone(true);
-    }, 9000);
+    }, 8300);
   }, []);
   return (
     <ThemeProvider theme={theme}>

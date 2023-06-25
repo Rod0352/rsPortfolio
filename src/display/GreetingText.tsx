@@ -1,27 +1,21 @@
 import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-
+import { slowLetterReveal } from "../utils/staggeringText";
 export const GreettingText = () => {
   const [text, setText] = useState("");
-  const slowLetterReveal = (text: string) => {
-    for (let i = 0; i < text.length; i++) {
-      setTimeout(() => {
-        setText(text.slice(0, i + 1));
-      }, 70 * i);
-    }
-  };
 
   useEffect(() => {
     const textArray = [
       "Hello World!",
       "My name is Rodney",
-      "Im a Full Stack Developer",
-      "Welcome to my life ...",
+      "I am a Full Stack Developer",
+      "Welcome...",
+      "npm run start",
     ];
     for (let i = 0; i < textArray.length; i++) {
       setTimeout(() => {
-        slowLetterReveal(textArray[i]);
-      }, 2300 * i);
+        slowLetterReveal(textArray[i], setText, 50);
+      }, 1900 * i);
     }
   }, []);
 
