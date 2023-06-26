@@ -79,7 +79,19 @@ export const AboutMe = () => {
   }, [2000]);
 
   return (
-    <Box sx={{ display: "flex", flexFlow: "row wrap" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexFlow: {
+          xs: "column nowrap",
+          sm: "column nowrap",
+          md: "row nowrap",
+          lg: "row nowrap",
+          xl: "row nowrap",
+        },
+        maxHeight: "100%",
+      }}
+    >
       <Paper
         elevation={3}
         sx={{

@@ -76,6 +76,8 @@ function App() {
             alignItems: "center",
             borderRadius: "26px",
             alignSelf: "center",
+            overflow: "auto",
+            flexDirection: "column",
           }}
         >
           {textDone ? (
