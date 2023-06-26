@@ -90,6 +90,7 @@ export const AboutMe = () => {
           xl: "row nowrap",
         },
         maxHeight: "100%",
+        overflow: "auto",
       }}
     >
       <Paper
