@@ -46,7 +46,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setTextDone(true);
-    }, 8300);
+    }, 300);
   }, []);
   return (
     <ThemeProvider theme={theme}>
