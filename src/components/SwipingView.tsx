@@ -1,9 +1,6 @@
 import * as React from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
-import ListSubheader from "@mui/material/ListSubheader";
-import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 import {
   Accordion,
@@ -12,7 +9,6 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { set } from "lodash";
 
 export default function ProjectList({
   itemData,
@@ -26,40 +22,36 @@ export default function ProjectList({
 }) {
   const [display, setDisplay] = useState<string | boolean>("none");
   const [width, setWidth] = useState("30%");
+  const [opacity, setOpacity] = useState(0);
   useEffect(() => {
     setTimeout(() => {
       setWidth("100%");
     }, 200);
     setTimeout(() => {
       setDisplay("block");
+      setOpacity(1);
     }, 500);
   }, []);
 
   return (
     <ImageList
       sx={{
-        display: "flex",
-        flexWrap: "wrap",
+        display: "flex !important",
+        flexWrap: "wrap !important",
+        flexDirection: "row !important",
         justifyContent: "space-around",
-        overflow: "scroll",
-        scrollSnapStop: "normal",
-        scrollSnapType: "y mandatory",
-        scrollBehavior: "smooth",
       }}
     >
-      <ImageListItem key="Subheader" cols={2}>
-        <ListSubheader component="div">My Past Works</ListSubheader>
-      </ImageListItem>
       {itemData.map((item, index) => (
         <ImageListItem
           key={item.img}
-          // sx={{ width: 248, height: 248, border: "1px solid #10ad30" }}
           sx={{
             margin: "1rem",
             border: "1px solid #10ad30",
             width: "100%",
             height: width,
             transition: "all 0.5s",
+            maxHeight: "15rem",
           }}
         >
           <img
@@ -71,7 +63,8 @@ export default function ProjectList({
               width: "100%",
               height: width,
               objectFit: "cover",
-              transition: "all 0.5s",
+              opacity: opacity,
+              transition: "all 0.8s",
             }}
           />
           {/* <ImageListItemBar
@@ -88,10 +81,10 @@ export default function ProjectList({
           /> */}
           <Accordion
             sx={{
-              border: "1px solid #10ad30",
+              // border: "1px solid #10ad30",
               borderRadius: "0px",
               position: "absolute",
-              background: "#0d7935b5",
+              background: "#118b3ede",
               color: "white",
               width: width,
               transition: "all 0.5s",
