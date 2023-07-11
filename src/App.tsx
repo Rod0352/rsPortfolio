@@ -46,7 +46,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setTextDone(true);
-    }, 8300);
+    }, 300);
   }, []);
   return (
     <ThemeProvider theme={theme}>
@@ -76,6 +76,8 @@ function App() {
             alignItems: "center",
             borderRadius: "26px",
             alignSelf: "center",
+            overflow: "auto",
+            flexDirection: "column",
           }}
         >
           {textDone ? (
