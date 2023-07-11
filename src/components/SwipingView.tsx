@@ -52,6 +52,15 @@ export default function ProjectList({
             height: width,
             transition: "all 0.5s",
             maxHeight: "15rem",
+            // if the slide is in the top 3, show it
+            opacity:
+              index < 3
+                ? 1
+                : // if the slide is in the bottom 3, show it
+                index > itemData.length - 4
+                ? 1
+                : // if the slide is in the middle 3, hide it
+                  0,
           }}
         >
           <img
