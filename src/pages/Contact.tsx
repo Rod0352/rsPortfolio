@@ -3,12 +3,21 @@ import React from "react";
 
 export const Contact = () => {
   return (
-    <Box>
+    <Box
+      sx={{
+        backgroundColor: "primary.main",
+        // height: "100vh",
+        // display: "flex",
+        color: "#fff",
+
+        // justifyContent: "center",
+      }}
+    >
       <Typography variant="h3">Contact</Typography>
       <FormControl>
-        <TextField id="name" label="Name" variant="standard" />
-        <TextField id="email" label="Email" variant="standard" />
-        <TextField id="message" label="Message" variant="standard" />
+        <TextField sx={{ color: "#fff" }} label="Name" />
+        <TextField label="Email" />
+        <TextField label="Message" />
       </FormControl>
     </Box>
   );

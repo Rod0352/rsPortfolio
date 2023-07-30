@@ -3,12 +3,10 @@ import React, { useEffect, useState } from "react";
 import { GreettingText } from "./display/GreetingText";
 import { SideBar } from "./components/SideBar";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { MainWrapper } from "./display/MainWrapper";
 import { AboutMe } from "./pages/AboutMe";
-import { Education } from "./pages/Education";
 import { Projects } from "./pages/Projects";
 import { Contact } from "./pages/Contact";
-import { slowLetterReveal } from "./utils/staggeringText";
+
 const theme = createTheme({
   breakpoints: {
     values: {
@@ -46,7 +44,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setTextDone(true);
-    }, 300);
+    }, 3000);
   }, []);
   return (
     <ThemeProvider theme={theme}>
@@ -78,6 +76,19 @@ function App() {
             alignSelf: "center",
             overflow: "auto",
             flexDirection: "column",
+            "&::-webkit-scrollbar": {
+              width: 10,
+              height: "50%",
+            },
+            "&::-webkit-scrollbar-track": {
+              backgroundColor: "#525252",
+              borderTopRightRadius: 5,
+              borderBottomRightRadius: 5,
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "grey",
+              borderRadius: 100,
+            },
           }}
         >
           {textDone ? (
@@ -85,7 +96,6 @@ function App() {
               <BrowserRouter>
                 <Routes>
                   <Route index element={<AboutMe />} />
-                  <Route path="/education" element={<Education />} />
                   <Route path="/projects" element={<Projects />} />
                   <Route path="/contact" element={<Contact />} />
                 </Routes>

@@ -24,7 +24,7 @@ export const AboutMe = () => {
     bio: {
       title: "Bio",
       aboutMe:
-        "I am a Full Stack Developer with a passion for learning and creating. I have a background in being awesome and have a passion for creating things via a keybaord. I bring with me a background in React, Node, Typesript, Material UI, and many more. I am always looking for new opportunities to learn and grow as a developer. If you like what you see, feel free to reach out to me via the contact page!  ",
+        "I am a Full Stack Developer with a passion for learning and creating. I have a background in being awesome and have a love for creating things via a keybaord. I bring with me a background in React, Node, Typesript, Material UI, and many more. I am always looking for new opportunities to learn and grow as a developer. If you like what you see, feel free to reach out to me via the contact page!  ",
       hobbies: ["Coding", "  Gaming", " Hiking", " Cooking"],
     },
     skills: {
