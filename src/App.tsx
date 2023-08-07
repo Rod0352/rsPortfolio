@@ -54,9 +54,10 @@ function App() {
           height: "100vh",
           display: "flex",
           justifyContent: "center",
+          padding: "2%",
         }}
       >
-        <Box
+        {/* <Box
           sx={{
             bg: "border-box",
             border: "1px #ffffff solid",
@@ -90,23 +91,23 @@ function App() {
               borderRadius: 100,
             },
           }}
-        >
-          {textDone ? (
-            <>
-              <BrowserRouter>
-                <Routes>
-                  <Route index element={<AboutMe />} />
-                  <Route path="/projects" element={<Projects />} />
-                  <Route path="/contact" element={<Contact />} />
-                </Routes>
-                <SideBar />
-              </BrowserRouter>
-            </>
-          ) : (
-            <GreettingText />
-          )}
-        </Box>
+        > */}
+        {textDone ? (
+          <>
+            <BrowserRouter>
+              <Routes>
+                <Route index element={<AboutMe />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/contact" element={<Contact />} />
+              </Routes>
+              <SideBar />
+            </BrowserRouter>
+          </>
+        ) : (
+          <GreettingText />
+        )}
       </Box>
+      {/* </Box> */}
     </ThemeProvider>
   );
 }

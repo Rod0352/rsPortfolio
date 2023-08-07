@@ -96,6 +96,7 @@ export const AboutMe = () => {
       <Paper
         elevation={3}
         sx={{
+          maxHeight: "400px",
           flex: 1,
           minWidth: { xs: 100, sm: 120, md: 160, lg: 200, xl: 240 },
           backgroundColor: "#fff",
@@ -141,6 +142,7 @@ export const AboutMe = () => {
         elevation={3}
         sx={{
           flex: 1,
+          maxHeight: "400px",
           maxWidth: "55vh",
           display: "flex",
           flexDirection: "column",
@@ -177,6 +179,7 @@ export const AboutMe = () => {
         elevation={3}
         sx={{
           flex: 1,
+          maxHeight: "400px",
           display: "flex",
           backgroundColor: "#fff",
           color: "#000",
