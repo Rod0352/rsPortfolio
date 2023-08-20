@@ -7,12 +7,28 @@ import {
   Watch,
   WorkOutline,
 } from "@mui/icons-material";
-import { Box, List, Paper, Typography } from "@mui/material";
+import { Box, LinearProgress, List, Paper, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { IconsList } from "../components/IconsList";
 import { slowLetterReveal } from "../utils/staggeringText";
 
 export const AboutMe = () => {
+  const SkillsProgress = [
+    { Typescript: 100 },
+    { Javascript: 100 },
+    { React: 95 },
+    { Node: 90 },
+    { Express: 67 },
+    { MaterialUI: 98 },
+    { Bootstrap: 70 },
+    { Handlebars: 50 },
+    { jQuery: 70 },
+    { Mongoose: 60 },
+    { Sequelize: 50 },
+    { MySQL: 70 },
+    { MongoDB: 60 },
+    { Aws: 60 },
+  ];
   const bio = {
     description: {
       title: "Stats",
@@ -79,138 +95,178 @@ export const AboutMe = () => {
   }, [2000]);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexFlow: {
-          xs: "column nowrap",
-          sm: "column nowrap",
-          md: "row nowrap",
-          lg: "row nowrap",
-          xl: "row nowrap",
-        },
-        maxHeight: "100%",
-        overflow: "auto",
-      }}
-    >
-      <Paper
-        elevation={3}
+    <>
+      <Box
         sx={{
-          maxHeight: "400px",
-          flex: 1,
-          minWidth: { xs: 100, sm: 120, md: 160, lg: 200, xl: 240 },
-          backgroundColor: "#fff",
-          color: "#000",
-          paddingRight: "1rem",
-          padding: "1rem",
-          margin: "1rem",
           display: "flex",
-          transition: "all 0.5s ease",
-          flexDirection: "column",
-          justifyContent: "space-around",
+          flexFlow: {
+            xs: "column nowrap",
+            sm: "column nowrap",
+            md: "row nowrap",
+            lg: "row nowrap",
+            xl: "row nowrap",
+          },
+          maxHeight: "100%",
+          overflow: "auto",
         }}
       >
-        <Typography variant="h4" sx={{ textAlign: "center" }}>
-          {bio.description.title}
-        </Typography>
-        <List
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-        >
-          <IconsList
-            icon={<Person />}
-            primaryText="Name"
-            secondaryText={text}
-          />
-          <IconsList
-            icon={<WorkOutline />}
-            primaryText="Job Title"
-            secondaryText={jobTitleText}
-          />
-          <IconsList
-            icon={<Watch />}
-            primaryText="Age"
-            secondaryText={ageText}
-          />
-          <IconsList
-            icon={<PinDrop />}
-            primaryText="Location"
-            secondaryText={locationText}
-          />
-        </List>
-      </Paper>
-      <Paper
-        elevation={3}
-        sx={{
-          flex: 1,
-          maxHeight: "400px",
-          maxWidth: "55vh",
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: "secondary.main",
-          border: "1px #1a5726 solid",
-          boxShadow:
-            "5px 5px 9px rgb(30 172 48 / 45%), 5px 5px 9px rgb(11 187 17 / 30%)",
-          color: "#000",
-          padding: "1rem",
-          margin: "1rem",
-          transition: "all 0.5s ease",
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{ textAlign: "center", color: "#fff", marginBottom: "1rem" }}
-        >
-          {bio.bio.title}
-        </Typography>
-        <Typography
-          variant="subtitle1"
+        <Paper
+          elevation={3}
           sx={{
-            textAlign: "center",
-            overflow: "hidden",
-            alignSelf: "center",
-            color: "#fff",
+            maxHeight: "400px",
+            flex: 1,
+            minWidth: { xs: 100, sm: 120, md: 160, lg: 200, xl: 240 },
+            backgroundColor: "#fff",
+            color: "#000",
+            paddingRight: "1rem",
+            padding: "1rem",
+            margin: "1rem",
+            display: "flex",
+            transition: "all 0.5s ease",
+            flexDirection: "column",
+            justifyContent: "space-around",
           }}
         >
-          {aboutMeText}
-        </Typography>
-      </Paper>
-
-      <Paper
-        elevation={3}
-        sx={{
-          flex: 1,
-          maxHeight: "400px",
-          display: "flex",
-          backgroundColor: "#fff",
-          color: "#000",
-          padding: "1rem",
-          margin: "1rem",
-          flexDirection: "column",
-        }}
-      >
-        <Typography variant="h4" sx={{ textAlign: "center" }}>
-          Soft Skills & Hobbies
-        </Typography>
-        <List
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+          <Typography variant="h4" sx={{ textAlign: "center" }}>
+            {bio.description.title}
+          </Typography>
+          <List
+            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+          >
+            <IconsList
+              icon={<Person />}
+              primaryText="Name"
+              secondaryText={text}
+            />
+            <IconsList
+              icon={<WorkOutline />}
+              primaryText="Job Title"
+              secondaryText={jobTitleText}
+            />
+            <IconsList
+              icon={<Watch />}
+              primaryText="Age"
+              secondaryText={ageText}
+            />
+            <IconsList
+              icon={<PinDrop />}
+              primaryText="Location"
+              secondaryText={locationText}
+            />
+          </List>
+        </Paper>
+        <Paper
+          elevation={3}
+          sx={{
+            flex: 1,
+            maxHeight: "400px",
+            maxWidth: "55vh",
+            display: "flex",
+            flexDirection: "column",
+            backgroundColor: "secondary.main",
+            border: "1px #1a5726 solid",
+            boxShadow:
+              "5px 5px 9px rgb(30 172 48 / 45%), 5px 5px 9px rgb(11 187 17 / 30%)",
+            color: "#000",
+            padding: "1rem",
+            margin: "1rem",
+            transition: "all 0.5s ease",
+          }}
         >
-          <IconsList
-            icon={<EmojiPeople />}
-            primaryText="Soft Skills"
-            secondaryText={softSkillsText}
-          />
-          <IconsList
-            icon={<SportsSoccer />}
-            primaryText="Hobbies"
-            secondaryText={hobbiesText}
-          />
-          <IconsList
-            icon={<SpeakerNotes />}
-            primaryText="Languages Spoken"
-            secondaryText={languagesSpokenText}
-          />
-        </List>
-      </Paper>
-    </Box>
+          <Typography
+            variant="h4"
+            sx={{ textAlign: "center", color: "#fff", marginBottom: "1rem" }}
+          >
+            {bio.bio.title}
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            sx={{
+              textAlign: "center",
+              overflow: "hidden",
+              alignSelf: "center",
+              color: "#fff",
+            }}
+          >
+            {aboutMeText}
+          </Typography>
+        </Paper>
+
+        <Paper
+          elevation={3}
+          sx={{
+            flex: 1,
+            maxHeight: "400px",
+            display: "flex",
+            backgroundColor: "#fff",
+            color: "#000",
+            padding: "1rem",
+            margin: "1rem",
+            flexDirection: "column",
+          }}
+        >
+          <Typography variant="h4" sx={{ textAlign: "center" }}>
+            Soft Skills & Hobbies
+          </Typography>
+          <List
+            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+          >
+            <IconsList
+              icon={<EmojiPeople />}
+              primaryText="Soft Skills"
+              secondaryText={softSkillsText}
+            />
+            <IconsList
+              icon={<SportsSoccer />}
+              primaryText="Hobbies"
+              secondaryText={hobbiesText}
+            />
+            <IconsList
+              icon={<SpeakerNotes />}
+              primaryText="Languages Spoken"
+              secondaryText={languagesSpokenText}
+            />
+          </List>
+        </Paper>
+      </Box>
+      <Box>
+        <Typography variant="h4" sx={{ textAlign: "center" }}>
+          Skills
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexFlow: {
+              xs: "column nowrap",
+              sm: "column nowrap",
+              md: "row nowrap",
+              lg: "row nowrap",
+              xl: "row nowrap",
+            },
+            maxHeight: "100%",
+            overflow: "auto",
+          }}
+        >
+          {SkillsProgress.map((skill, index) => (
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "2fr 2fr",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#343331",
+                margin: "1rem",
+                color: "#fff",
+              }}
+            >
+              <Typography variant="h6" sx={{ textAlign: "center" }}>
+                {Object.keys(skill)}
+              </Typography>
+              <LinearProgress variant="determinate" value={50} />
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </>
   );
 };
