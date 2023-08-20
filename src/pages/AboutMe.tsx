@@ -11,23 +11,22 @@ import { Box, LinearProgress, List, Paper, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { IconsList } from "../components/IconsList";
 import { slowLetterReveal } from "../utils/staggeringText";
+import { set } from "lodash";
 
 export const AboutMe = () => {
   const SkillsProgress = [
     { Typescript: 100 },
-    { Javascript: 100 },
+    { Javascript: 10 },
     { React: 95 },
     { Node: 90 },
     { Express: 67 },
     { MaterialUI: 98 },
     { Bootstrap: 70 },
-    { Handlebars: 50 },
     { jQuery: 70 },
     { Mongoose: 60 },
-    { Sequelize: 50 },
     { MySQL: 70 },
     { MongoDB: 60 },
-    { Aws: 60 },
+    { AWS: 70 },
   ];
   const bio = {
     description: {
@@ -229,40 +228,46 @@ export const AboutMe = () => {
           </List>
         </Paper>
       </Box>
-      <Box>
-        <Typography variant="h4" sx={{ textAlign: "center" }}>
-          Skills
+      <Box
+        sx={{
+          marginTop: "2rem",
+        }}
+      >
+        <Typography variant="h4" sx={{ textAlign: "center", color: "white" }}>
+          My Stack
         </Typography>
         <Box
           sx={{
             display: "flex",
-            flexFlow: {
-              xs: "column nowrap",
-              sm: "column nowrap",
-              md: "row nowrap",
-              lg: "row nowrap",
-              xl: "row nowrap",
-            },
+            flexWrap: "wrap",
+            justifyContent: "center",
             maxHeight: "100%",
-            overflow: "auto",
           }}
         >
           {SkillsProgress.map((skill, index) => (
             <Box
+              key={index}
               sx={{
-                display: "grid",
-                gridTemplateColumns: "2fr 2fr",
-                alignItems: "center",
+                display: "flex",
+                flexWrap: "wrap",
                 justifyContent: "center",
-                backgroundColor: "#343331",
                 margin: "1rem",
+                width: "15%",
                 color: "#fff",
               }}
             >
-              <Typography variant="h6" sx={{ textAlign: "center" }}>
+              <Typography
+                variant="h6"
+                sx={{ textAlign: "right", color: "white" }}
+              >
                 {Object.keys(skill)}
               </Typography>
-              <LinearProgress variant="determinate" value={50} />
+              <LinearProgress
+                sx={{ width: "100%", backgroundColor: "#fff" }}
+                variant="determinate"
+                color="success"
+                value={Object.values(skill).reduce((acc, curr) => acc + curr)}
+              />
             </Box>
           ))}
         </Box>

@@ -26,7 +26,7 @@ export const SideBar = () => {
       }}
     >
       {icons.map((icon, index) => (
-        <Tooltip title={icon.name} placement="right">
+        <Tooltip title={icon.name} key={index} placement="right">
           <IconButton
             size={"large"}
             key={index}
