@@ -7,12 +7,27 @@ import {
   Watch,
   WorkOutline,
 } from "@mui/icons-material";
-import { Box, List, Paper, Typography } from "@mui/material";
+import { Box, LinearProgress, List, Paper, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { IconsList } from "../components/IconsList";
 import { slowLetterReveal } from "../utils/staggeringText";
+import { set } from "lodash";
 
 export const AboutMe = () => {
+  const SkillsProgress = [
+    { Typescript: 100 },
+    { Javascript: 10 },
+    { React: 95 },
+    { Node: 90 },
+    { Express: 67 },
+    { MaterialUI: 98 },
+    { Bootstrap: 70 },
+    { jQuery: 70 },
+    { Mongoose: 60 },
+    { MySQL: 70 },
+    { MongoDB: 60 },
+    { AWS: 70 },
+  ];
   const bio = {
     description: {
       title: "Stats",
@@ -24,7 +39,7 @@ export const AboutMe = () => {
     bio: {
       title: "Bio",
       aboutMe:
-        "I am a Full Stack Developer with a passion for learning and creating. I have a background in being awesome and have a passion for creating things via a keybaord. I bring with me a background in React, Node, Typesript, Material UI, and many more. I am always looking for new opportunities to learn and grow as a developer. If you like what you see, feel free to reach out to me via the contact page!  ",
+        "I am a Full Stack Developer with a passion for learning and creating. I have a background in being awesome and have a love for creating things via a keybaord. I bring with me a background in React, Node, Typesript, Material UI, and many more. I am always looking for new opportunities to learn and grow as a developer. If you like what you see, feel free to reach out to me via the contact page!  ",
       hobbies: ["Coding", "  Gaming", " Hiking", " Cooking"],
     },
     skills: {
@@ -79,135 +94,184 @@ export const AboutMe = () => {
   }, [2000]);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexFlow: {
-          xs: "column nowrap",
-          sm: "column nowrap",
-          md: "row nowrap",
-          lg: "row nowrap",
-          xl: "row nowrap",
-        },
-        maxHeight: "100%",
-        overflow: "auto",
-      }}
-    >
-      <Paper
-        elevation={3}
+    <>
+      <Box
         sx={{
-          flex: 1,
-          minWidth: { xs: 100, sm: 120, md: 160, lg: 200, xl: 240 },
-          backgroundColor: "#fff",
-          color: "#000",
-          paddingRight: "1rem",
-          padding: "1rem",
-          margin: "1rem",
           display: "flex",
-          transition: "all 0.5s ease",
-          flexDirection: "column",
-          justifyContent: "space-around",
+          flexFlow: {
+            xs: "column nowrap",
+            sm: "column nowrap",
+            md: "row nowrap",
+            lg: "row nowrap",
+            xl: "row nowrap",
+          },
+          maxHeight: "100%",
+          overflow: "auto",
         }}
       >
-        <Typography variant="h4" sx={{ textAlign: "center" }}>
-          {bio.description.title}
-        </Typography>
-        <List
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-        >
-          <IconsList
-            icon={<Person />}
-            primaryText="Name"
-            secondaryText={text}
-          />
-          <IconsList
-            icon={<WorkOutline />}
-            primaryText="Job Title"
-            secondaryText={jobTitleText}
-          />
-          <IconsList
-            icon={<Watch />}
-            primaryText="Age"
-            secondaryText={ageText}
-          />
-          <IconsList
-            icon={<PinDrop />}
-            primaryText="Location"
-            secondaryText={locationText}
-          />
-        </List>
-      </Paper>
-      <Paper
-        elevation={3}
-        sx={{
-          flex: 1,
-          maxWidth: "55vh",
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: "secondary.main",
-          border: "1px #1a5726 solid",
-          boxShadow:
-            "5px 5px 9px rgb(30 172 48 / 45%), 5px 5px 9px rgb(11 187 17 / 30%)",
-          color: "#000",
-          padding: "1rem",
-          margin: "1rem",
-          transition: "all 0.5s ease",
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{ textAlign: "center", color: "#fff", marginBottom: "1rem" }}
-        >
-          {bio.bio.title}
-        </Typography>
-        <Typography
-          variant="subtitle1"
+        <Paper
+          elevation={3}
           sx={{
-            textAlign: "center",
-            overflow: "hidden",
-            alignSelf: "center",
-            color: "#fff",
+            maxHeight: "400px",
+            flex: 1,
+            minWidth: { xs: 100, sm: 120, md: 160, lg: 200, xl: 240 },
+            backgroundColor: "#fff",
+            color: "#000",
+            paddingRight: "1rem",
+            padding: "1rem",
+            margin: "1rem",
+            display: "flex",
+            transition: "all 0.5s ease",
+            flexDirection: "column",
+            justifyContent: "space-around",
           }}
         >
-          {aboutMeText}
-        </Typography>
-      </Paper>
+          <Typography variant="h4" sx={{ textAlign: "center" }}>
+            {bio.description.title}
+          </Typography>
+          <List
+            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+          >
+            <IconsList
+              icon={<Person />}
+              primaryText="Name"
+              secondaryText={text}
+            />
+            <IconsList
+              icon={<WorkOutline />}
+              primaryText="Job Title"
+              secondaryText={jobTitleText}
+            />
+            <IconsList
+              icon={<Watch />}
+              primaryText="Age"
+              secondaryText={ageText}
+            />
+            <IconsList
+              icon={<PinDrop />}
+              primaryText="Location"
+              secondaryText={locationText}
+            />
+          </List>
+        </Paper>
+        <Paper
+          elevation={3}
+          sx={{
+            flex: 1,
+            maxHeight: "400px",
+            maxWidth: "55vh",
+            display: "flex",
+            flexDirection: "column",
+            backgroundColor: "secondary.main",
+            border: "1px #1a5726 solid",
+            boxShadow:
+              "5px 5px 9px rgb(30 172 48 / 45%), 5px 5px 9px rgb(11 187 17 / 30%)",
+            color: "#000",
+            padding: "1rem",
+            margin: "1rem",
+            transition: "all 0.5s ease",
+          }}
+        >
+          <Typography
+            variant="h4"
+            sx={{ textAlign: "center", color: "#fff", marginBottom: "1rem" }}
+          >
+            {bio.bio.title}
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            sx={{
+              textAlign: "center",
+              overflow: "hidden",
+              alignSelf: "center",
+              color: "#fff",
+            }}
+          >
+            {aboutMeText}
+          </Typography>
+        </Paper>
 
-      <Paper
-        elevation={3}
+        <Paper
+          elevation={3}
+          sx={{
+            flex: 1,
+            maxHeight: "400px",
+            display: "flex",
+            backgroundColor: "#fff",
+            color: "#000",
+            padding: "1rem",
+            margin: "1rem",
+            flexDirection: "column",
+          }}
+        >
+          <Typography variant="h4" sx={{ textAlign: "center" }}>
+            Soft Skills & Hobbies
+          </Typography>
+          <List
+            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+          >
+            <IconsList
+              icon={<EmojiPeople />}
+              primaryText="Soft Skills"
+              secondaryText={softSkillsText}
+            />
+            <IconsList
+              icon={<SportsSoccer />}
+              primaryText="Hobbies"
+              secondaryText={hobbiesText}
+            />
+            <IconsList
+              icon={<SpeakerNotes />}
+              primaryText="Languages Spoken"
+              secondaryText={languagesSpokenText}
+            />
+          </List>
+        </Paper>
+      </Box>
+      <Box
         sx={{
-          flex: 1,
-          display: "flex",
-          backgroundColor: "#fff",
-          color: "#000",
-          padding: "1rem",
-          margin: "1rem",
-          flexDirection: "column",
+          marginTop: "2rem",
         }}
       >
-        <Typography variant="h4" sx={{ textAlign: "center" }}>
-          Soft Skills & Hobbies
+        <Typography variant="h4" sx={{ textAlign: "center", color: "white" }}>
+          My Stack
         </Typography>
-        <List
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            maxHeight: "100%",
+          }}
         >
-          <IconsList
-            icon={<EmojiPeople />}
-            primaryText="Soft Skills"
-            secondaryText={softSkillsText}
-          />
-          <IconsList
-            icon={<SportsSoccer />}
-            primaryText="Hobbies"
-            secondaryText={hobbiesText}
-          />
-          <IconsList
-            icon={<SpeakerNotes />}
-            primaryText="Languages Spoken"
-            secondaryText={languagesSpokenText}
-          />
-        </List>
-      </Paper>
-    </Box>
+          {SkillsProgress.map((skill, index) => (
+            <Box
+              key={index}
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                margin: "1rem",
+                width: "15%",
+                color: "#fff",
+              }}
+            >
+              <Typography
+                variant="h6"
+                sx={{ textAlign: "right", color: "white" }}
+              >
+                {Object.keys(skill)}
+              </Typography>
+              <LinearProgress
+                sx={{ width: "100%", backgroundColor: "#fff" }}
+                variant="determinate"
+                color="success"
+                value={Object.values(skill).reduce((acc, curr) => acc + curr)}
+              />
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </>
   );
 };

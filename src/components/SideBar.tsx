@@ -6,29 +6,27 @@ import { useNavigate } from "react-router-dom";
 export const SideBar = () => {
   const navigate = useNavigate();
 
-  const sidebarIcons = [
+  const icons = [
     { icon: <Person />, name: "About Me", route: "/" },
-    // { icon: <School />, name: "Education", route: "/education" },
-    { icon: <Work />, name: "Work Experience", route: "/projects" },
-    { icon: <MailOutline />, name: "Contact", route: "/contact" },
+    { icon: <Work />, name: "Things I've Made", route: "/projects" },
+    { icon: <MailOutline />, name: "Reach out!", route: "/contact" },
   ];
+
   return (
     <Box
       sx={{
-        // height: "100vh",
-        transform: "translateZ(0px)",
-        flexGrow: 1,
-        position: "absolute",
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
         top: "0",
-        left: "0",
-        zIndex: 100,
-        // width: "100%",
+        width: "100%",
+        justifyContent: "center",
+        position: "fixed",
+        zIndex: 7,
+        backgroundColor: " #343331",
       }}
     >
-      {sidebarIcons.map((icon, index) => (
-        <Tooltip title={icon.name} placement="right">
+      {icons.map((icon, index) => (
+        <Tooltip title={icon.name} key={index} placement="right">
           <IconButton
             size={"large"}
             key={index}
@@ -39,7 +37,7 @@ export const SideBar = () => {
                 "-1px -1px 3px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3)",
               border: "1px #ffffff solid",
               fontSize: "6rem",
-              // transform: "scale(1)",
+              margin: "1rem",
             }}
             onClick={() => navigate(icon.route)}
           >
