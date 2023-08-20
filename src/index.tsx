@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 const css = `
   body {
+    background-color: #343331;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,7 +13,7 @@ const css = `
 const style = document.createElement("style");
 style.appendChild(document.createTextNode(css));
 document.head.appendChild(style);
-  
+
 const rootElement = document.getElementById("root") as
   | Element
   | DocumentFragment;

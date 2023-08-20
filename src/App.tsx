@@ -53,32 +53,33 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box
-        sx={{
-          bgcolor: "primary.main",
-          // height: "66vw",
-          alignItems: "center",
-          overflow: "auto",
-          display: "flex",
-          justifyContent: "center",
-          padding: "2%",
-        }}
-      >
-        {textDone ? (
-          <BrowserRouter>
+      <BrowserRouter>
+        <SideBar />
+        <Box
+          sx={{
+            bgcolor: "primary.main",
+            height: "100%",
+            alignItems: "center",
+            overflow: "auto",
+            display: "flex",
+            justifyContent: "center",
+            padding: "2%",
+            marginTop: "5rem",
+          }}
+        >
+          {textDone ? (
             <Box>
-              <SideBar />
               <Routes>
                 <Route index element={<AboutMe />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/contact" element={<Contact />} />
               </Routes>
             </Box>
-          </BrowserRouter>
-        ) : (
-          <GreettingText />
-        )}
-      </Box>
+          ) : (
+            <GreettingText />
+          )}
+        </Box>
+      </BrowserRouter>
       {/* </Box> */}
     </ThemeProvider>
   );
