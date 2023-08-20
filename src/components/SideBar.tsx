@@ -8,22 +8,22 @@ export const SideBar = () => {
 
   const sidebarIcons = [
     { icon: <Person />, name: "About Me", route: "/" },
-    // { icon: <School />, name: "Education", route: "/education" },
-    { icon: <Work />, name: "Work Experience", route: "/projects" },
-    { icon: <MailOutline />, name: "Contact", route: "/contact" },
+    { icon: <Work />, name: "Things I've Made", route: "/projects" },
+    { icon: <MailOutline />, name: "Reach out!", route: "/contact" },
   ];
   return (
     <Box
       sx={{
-        // height: "100vh",
-        transform: "translateZ(0px)",
-        flexGrow: 1,
-        position: "absolute",
-        display: "flex",
-        flexDirection: "column",
+        // height: "100%",
+        // transform: "translateZ(0px)",
+        // flexGrow: 1,
+        // position: "absolute",
+        display: "contents",
+        flexDirection: "row",
         top: "0",
-        left: "0",
-        zIndex: 100,
+        position: "fixed",
+        // left: "0",
+        // zIndex: 100,
         // width: "100%",
       }}
     >

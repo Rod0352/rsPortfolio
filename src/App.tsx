@@ -1,6 +1,6 @@
 import { Box, ThemeProvider, Typography, createTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { GreettingText } from "./display/GreetingText";
+import { GreettingText } from "./components/GreetingText";
 import { SideBar } from "./components/SideBar";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { AboutMe } from "./pages/AboutMe";
@@ -8,6 +8,17 @@ import { Projects } from "./pages/Projects";
 import { Contact } from "./pages/Contact";
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#343331",
+    },
+    secondary: {
+      main: "#363636",
+    },
+    background: {
+      default: "#343331",
+    },
+  },
   breakpoints: {
     values: {
       xs: 0,
@@ -29,80 +40,41 @@ const theme = createTheme({
       },
     },
   },
-  palette: {
-    primary: {
-      main: "#343331",
-    },
-    secondary: {
-      main: "#363636",
-    },
-  },
 });
 
 function App() {
   const [textDone, setTextDone] = useState(false);
+
   useEffect(() => {
     setTimeout(() => {
       setTextDone(true);
     }, 3000);
   }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <Box
         sx={{
           bgcolor: "primary.main",
-          height: "100vh",
+          // height: "66vw",
+          alignItems: "center",
+          overflow: "auto",
           display: "flex",
           justifyContent: "center",
           padding: "2%",
         }}
       >
-        {/* <Box
-          sx={{
-            bg: "border-box",
-            border: "1px #ffffff solid",
-            boxShadow:
-              "-5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3)",
-            height: textDone
-              ? "85vh"
-              : { xs: "20vh", sm: "30vh", md: "40vh", lg: "45vh", xl: "50vh" },
-            transition: "all 0.5s ease",
-            width: textDone
-              ? "69vw"
-              : { xs: "80vw", sm: "67vw", md: "40vw", lg: "52vw", xl: "56vw" },
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: "26px",
-            alignSelf: "center",
-            overflow: "auto",
-            flexDirection: "column",
-            "&::-webkit-scrollbar": {
-              width: 10,
-              height: "50%",
-            },
-            "&::-webkit-scrollbar-track": {
-              backgroundColor: "#525252",
-              borderTopRightRadius: 5,
-              borderBottomRightRadius: 5,
-            },
-            "&::-webkit-scrollbar-thumb": {
-              backgroundColor: "grey",
-              borderRadius: 100,
-            },
-          }}
-        > */}
         {textDone ? (
-          <>
-            <BrowserRouter>
+          <BrowserRouter>
+            <Box>
+              <SideBar />
               <Routes>
                 <Route index element={<AboutMe />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/contact" element={<Contact />} />
               </Routes>
-              <SideBar />
-            </BrowserRouter>
-          </>
+            </Box>
+          </BrowserRouter>
         ) : (
           <GreettingText />
         )}
