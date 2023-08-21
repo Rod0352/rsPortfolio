@@ -31,7 +31,7 @@ export const SideBar = () => {
             size={"large"}
             key={index}
             sx={{
-              color: "#fff",
+              color: location.pathname === icon.route ? "#10ad30" : "#fff",
               borderRadius: "5px",
               boxShadow:
                 "-1px -1px 3px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3)",

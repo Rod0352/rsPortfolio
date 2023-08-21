@@ -54,7 +54,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <SideBar />
+        {textDone ? <SideBar /> : null}
         <Box
           sx={{
             bgcolor: "primary.main",
@@ -70,7 +70,7 @@ function App() {
           {textDone ? (
             <Box>
               <Routes>
-                <Route index element={<AboutMe />} />
+                <Route index path="/" element={<AboutMe />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/contact" element={<Contact />} />
               </Routes>

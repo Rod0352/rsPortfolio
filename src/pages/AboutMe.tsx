@@ -7,26 +7,38 @@ import {
   Watch,
   WorkOutline,
 } from "@mui/icons-material";
+import {
+  AmazonwebservicesOriginal,
+  ExpressOriginal,
+  JavascriptOriginal,
+  MaterialuiOriginal,
+  NodejsOriginal,
+  ReactOriginal,
+  TypescriptOriginal,
+} from "devicons-react";
+
 import { Box, LinearProgress, List, Paper, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { IconsList } from "../components/IconsList";
 import { slowLetterReveal } from "../utils/staggeringText";
-import { set } from "lodash";
 
 export const AboutMe = () => {
   const SkillsProgress = [
-    { Typescript: 100 },
-    { Javascript: 10 },
-    { React: 95 },
-    { Node: 90 },
-    { Express: 67 },
-    { MaterialUI: 98 },
-    { Bootstrap: 70 },
-    { jQuery: 70 },
-    { Mongoose: 60 },
-    { MySQL: 70 },
-    { MongoDB: 60 },
-    { AWS: 70 },
+    {
+      name: "Typescript",
+      progress: 100,
+      icon: <TypescriptOriginal />,
+    },
+    {
+      name: "Javascript",
+      progress: 100,
+      icon: <JavascriptOriginal />,
+    },
+    { name: "React", progress: 95, icon: <ReactOriginal /> },
+    { name: "Node", progress: 90, icon: <NodejsOriginal /> },
+    { name: "Express", progress: 67, icon: <ExpressOriginal /> },
+    { name: "Material UI", progress: 98, icon: <MaterialuiOriginal /> },
+    { name: "AWS", progress: 70, icon: <AmazonwebservicesOriginal /> },
   ];
   const bio = {
     description: {
@@ -258,15 +270,27 @@ export const AboutMe = () => {
             >
               <Typography
                 variant="h6"
-                sx={{ textAlign: "right", color: "white" }}
+                style={{
+                  textAlign: "right",
+                  color: "white",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "98%",
+                }}
               >
-                {Object.keys(skill)}
+                {skill.name}
+                <>{skill.icon}</>
               </Typography>
               <LinearProgress
-                sx={{ width: "100%", backgroundColor: "#fff" }}
+                sx={{
+                  width: "100%",
+                  backgroundColor: "#fff",
+                  height: ".4rem",
+                  borderRadius: "50px",
+                }}
                 variant="determinate"
                 color="success"
-                value={Object.values(skill).reduce((acc, curr) => acc + curr)}
+                value={skill.progress}
               />
             </Box>
           ))}
