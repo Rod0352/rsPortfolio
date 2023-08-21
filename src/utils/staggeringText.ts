@@ -2,7 +2,7 @@ import * as React from "react";
 
 export const slowLetterReveal = (
   text: string,
-  hook: React.Dispatch<React.SetStateAction<string | number>>,
+  hook?: React.Dispatch<React.SetStateAction<string | number>>,
   speed?: number
 ) => {
   for (let i = 0; i < text.length; i++) {
