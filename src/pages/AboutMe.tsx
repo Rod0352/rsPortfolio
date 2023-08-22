@@ -21,21 +21,20 @@ import { Box, LinearProgress, List, Paper, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { IconsList } from "../components/IconsList";
 import { slowLetterReveal } from "../utils/staggeringText";
-import { set } from "lodash";
 
 export const AboutMe = () => {
   const SkillsProgress = [
     {
       name: "Typescript",
-      progress: 100,
+      progress: 91,
       icon: <TypescriptOriginal />,
     },
     {
       name: "Javascript",
-      progress: 100,
+      progress: 93,
       icon: <JavascriptOriginal />,
     },
-    { name: "React", progress: 95, icon: <ReactOriginal /> },
+    { name: "React", progress: 89, icon: <ReactOriginal /> },
     { name: "Node", progress: 90, icon: <NodejsOriginal /> },
     { name: "Express", progress: 67, icon: <ExpressOriginal /> },
     { name: "Material UI", progress: 98, icon: <MaterialuiOriginal /> },
@@ -303,6 +302,7 @@ export const AboutMe = () => {
                   width: "98%",
                 }}
               >
+                <>{skill.icon}</>
                 {skill.name}
                 <span
                   style={{
@@ -313,8 +313,6 @@ export const AboutMe = () => {
                 >
                   {Skillprogress(skill.progress) + "%"}
                 </span>
-
-                <>{skill.icon}</>
               </Typography>
               <LinearProgress
                 style={{

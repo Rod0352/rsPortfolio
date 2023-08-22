@@ -49,7 +49,7 @@ export default function CardConstructor({
   };
 
   return (
-    <Card sx={{ maxWidth: 345, backgroundColor: "#5a5a5a" }}>
+    <Card square sx={{ backgroundColor: "#5a5a5a" }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: blue[300] }} aria-label="recipe">
