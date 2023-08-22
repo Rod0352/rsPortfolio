@@ -18,6 +18,9 @@ const theme = createTheme({
     background: {
       default: "#343331",
     },
+    success: {
+      main: "#4fc100",
+    },
   },
   breakpoints: {
     values: {
@@ -36,6 +39,13 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: "#10ad30",
+        },
+      },
+    },
+    MuiLinearProgress: {
+      styleOverrides: {
+        bar1Determinate: {
+          transition: "none !important",
         },
       },
     },
