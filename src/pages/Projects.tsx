@@ -72,27 +72,71 @@ export const Projects = () => {
     },
   ];
 
+  const minWidth = window.innerWidth / 1.5;
+
   return (
-    <Grid
-      container
-      direction="row"
-      maxHeight={"87vh"}
-      spacing={1}
-      padding={5}
-      item
-      display={"flex"}
-      justifyContent={"space-around"}
+    //
+    <Paper
+      sx={{
+        width: "70vw",
+        height: "75vh",
+        display: "flex",
+        backgroundColor: "#1A2027",
+        borderRadius: "1rem",
+        boxShadow:
+          "5px 5px 9px rgb(15 62 225 / 45%), 5px 5px 9px rgb(11 187 17 / 30%)",
+      }}
     >
-      {itemData.map((item, index) => (
-        <Item key={index}>
-          {CardConstructor({
-            images: item.img,
-            title: item.title,
-            description: item.description,
-            link: item.link,
-          })}
-        </Item>
-      ))}
-    </Grid>
+      <Box display={"flex"}>
+        <Box
+          sx={{
+            width: "1rem",
+            height: "1rem",
+            backgroundColor: "#FF605C",
+            borderRadius: "50%",
+            margin: "0.5rem",
+          }}
+        />
+        <Box
+          sx={{
+            width: "1rem",
+            height: "1rem",
+            backgroundColor: "#FFBD44",
+            borderRadius: "50%",
+            margin: "0.5rem",
+          }}
+        />
+        <Box
+          sx={{
+            width: "1rem",
+            height: "1rem",
+            backgroundColor: "#00CA4E",
+            borderRadius: "50%",
+            margin: "0.5rem",
+          }}
+        />
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          flexWrap: "wrap",
+          overflowX: "scroll",
+        }}
+      >
+        {itemData.map((item, index) => (
+          <CardConstructor
+            key={index}
+            images={item.img}
+            title={item.title}
+            description={item.description}
+            link={item.link}
+          />
+        ))}
+      </Box>
+    </Paper>
   );
 };
