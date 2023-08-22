@@ -21,6 +21,7 @@ import { Box, LinearProgress, List, Paper, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { IconsList } from "../components/IconsList";
 import { slowLetterReveal } from "../utils/staggeringText";
+import { set } from "lodash";
 
 export const AboutMe = () => {
   const SkillsProgress = [
@@ -49,7 +50,7 @@ export const AboutMe = () => {
       location: "Columbus, Ohio",
     },
     bio: {
-      title: "Bio",
+      title: "Who am I ?",
       aboutMe:
         "I am a Full Stack Developer with a passion for learning and creating. I have a background in being awesome and have a love for creating things via a keybaord. I bring with me a background in React, Node, Typesript, Material UI, and many more. I am always looking for new opportunities to learn and grow as a developer. If you like what you see, feel free to reach out to me via the contact page!  ",
       hobbies: ["Coding", "  Gaming", " Hiking", " Cooking"],
@@ -95,7 +96,9 @@ export const AboutMe = () => {
     slowLetterReveal(bio.description.jobTitle, setJobTitleText);
     slowLetterReveal(bio.description.age.toString(), setAgeText);
     slowLetterReveal(bio.description.location, setLocationText);
-    slowLetterReveal(bio.bio.aboutMe, setAboutMeText, 7);
+    setTimeout(() => {
+      slowLetterReveal(bio.bio.aboutMe, setAboutMeText, 10);
+    }, 250);
     slowLetterReveal(bio.bio.hobbies.toString(), setHobbiesText);
     slowLetterReveal(bio.skills.languages.toString(), setLanguagesText);
     slowLetterReveal(
@@ -104,6 +107,21 @@ export const AboutMe = () => {
     );
     slowLetterReveal(bio.skills.personal.toString(), setSoftSkillsText, 20);
   }, [2000]);
+
+  function Skillprogress(num: number) {
+    const [progress, setProgress] = useState(0);
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setProgress((prevProgress) =>
+          prevProgress >= num ? num : prevProgress + 1
+        );
+      }, 10);
+      return () => {
+        clearInterval(timer);
+      };
+    }, [600]);
+    return progress;
+  }
 
   return (
     <>
@@ -136,6 +154,13 @@ export const AboutMe = () => {
             transition: "all 0.5s ease",
             flexDirection: "column",
             justifyContent: "space-around",
+            // ":hover": {
+            //   backgroundColor: "#f2f2f2",
+            //   color: "green",
+            //   transform: "scale(1.05)",
+            //   boxShadow:
+            //     "2px 2px 3px rgb(30 172 48 / 45%), 2px 2px 4px rgb(11 187 17 / 30%)",
+            // },
           }}
         >
           <Typography variant="h4" sx={{ textAlign: "center" }}>
@@ -151,7 +176,7 @@ export const AboutMe = () => {
             />
             <IconsList
               icon={<WorkOutline />}
-              primaryText="Job Title"
+              primaryText="Occupation"
               secondaryText={jobTitleText}
             />
             <IconsList
@@ -193,7 +218,7 @@ export const AboutMe = () => {
           <Typography
             variant="subtitle1"
             sx={{
-              textAlign: "center",
+              textAlign: "justify",
               overflow: "hidden",
               alignSelf: "center",
               color: "#fff",
@@ -269,7 +294,7 @@ export const AboutMe = () => {
               }}
             >
               <Typography
-                variant="h6"
+                variant="subtitle1"
                 style={{
                   textAlign: "right",
                   color: "white",
@@ -279,18 +304,28 @@ export const AboutMe = () => {
                 }}
               >
                 {skill.name}
+                <span
+                  style={{
+                    color: "#10ad30",
+                    flex: 0.9,
+                    fontSize: ".7rem",
+                  }}
+                >
+                  {Skillprogress(skill.progress) + "%"}
+                </span>
+
                 <>{skill.icon}</>
               </Typography>
               <LinearProgress
-                sx={{
+                style={{
                   width: "100%",
-                  backgroundColor: "#fff",
+                  backgroundColor: "#000",
                   height: ".4rem",
                   borderRadius: "50px",
                 }}
                 variant="determinate"
                 color="success"
-                value={skill.progress}
+                value={Skillprogress(skill.progress)}
               />
             </Box>
           ))}
