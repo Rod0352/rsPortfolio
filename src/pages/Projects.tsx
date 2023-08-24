@@ -1,6 +1,6 @@
 import { Box, Grid, Paper, styled } from "@mui/material";
 import React from "react";
-import CardConstructor from "../components/InfoCards";
+// import CardConstructor from "../components/ProjectFolder";
 
 const appImage = require("../images/app.jpg");
 const spImage = require("../images/support_portal.png");
@@ -127,7 +127,7 @@ export const Projects = () => {
           overflowX: "scroll",
         }}
       >
-        {itemData.map((item, index) => (
+        {/* {itemData.map((item, index) => (
           <CardConstructor
             key={index}
             images={item.img}
@@ -135,7 +135,7 @@ export const Projects = () => {
             description={item.description}
             link={item.link}
           />
-        ))}
+        ))} */}
       </Box>
     </Paper>
   );
