@@ -80,9 +80,11 @@ function App() {
           {textDone ? (
             <Box>
               <Routes>
-                <Route index path="/" element={<AboutMe />} />
+                <Route index element={<AboutMe />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<h1>404</h1>} />
+                <Route path="/" element={<AboutMe />} />
               </Routes>
             </Box>
           ) : (
