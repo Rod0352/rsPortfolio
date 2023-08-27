@@ -1,95 +1,162 @@
-import { Box, FormControl, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  FormControl,
+  TextField,
+  Typography,
+  outlinedInputClasses,
+} from "@mui/material";
 import React from "react";
 
 export const Contact = () => {
   return (
-    <Box
-      sx={{
-        backgroundColor: "primary.main",
-        // height: "100vh",
-        // display: "flex",
-        color: "#fff",
-
-        // justifyContent: "center",
-      }}
-    >
-      <Typography variant="h3">Lets create something together!</Typography>
+    <>
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "100%",
+          height: "35rem",
           flexDirection: "column",
-          color: "red",
+          color: "white",
+          padding: 5,
+          width: "35rem",
+          backgroundColor: "red ",
+          opacity: 0.8,
+          borderRadius: "100%",
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+        }}
+      ></Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "35rem",
+          flexDirection: "column",
+          color: "white",
+          padding: 5,
+          width: "35rem",
+          backgroundColor: "red ",
+          opacity: 0.8,
+          borderRadius: "100%",
+          position: "absolute",
+          top: 0,
+          right: 0,
+        }}
+      ></Box>
+      <Box
+        sx={{
+          // backgroundColor: "primary.main",
+          color: "#fff",
         }}
       >
-        <FormControl
+        <Typography sx={{ zIndex: 7 }} variant="h3">
+          Lets create something together!
+        </Typography>
+        <Box
           sx={{
-            width: "50%",
-            margin: "1rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "35rem",
+            flexDirection: "column",
+            color: "white",
+            padding: 5,
+            width: "35rem",
+            backgroundColor: "red ",
+            opacity: 0.95,
+            borderRadius: "100%",
+            zIndex: 7,
           }}
         >
-          <TextField
-            id="outlined-basic"
-            label="Name"
-            variant="outlined"
-            color="secondary"
+          <FormControl
             sx={{
-              width: "100%",
+              // width: "100%",
+              margin: "1rem",
+              color: "white",
             }}
-          />
-        </FormControl>
-        <FormControl
-          sx={{
-            width: "50%",
-            margin: "1rem",
-          }}
-        >
-          <TextField
-            id="outlined-basic"
-            label="Email"
-            variant="outlined"
-            color="secondary"
+          >
+            <TextField
+              id="outlined-basic"
+              // label="Name"
+              variant="outlined"
+              color="info"
+              sx={{
+                width: "100%",
+                color: "white",
+                backgroundColor: "red",
+                border: "1px solid white",
+                borderRadius: "5px",
+              }}
+            />
+          </FormControl>
+          <FormControl
             sx={{
-              width: "100%",
+              width: "50%",
+              margin: "1rem",
+              color: "white",
             }}
-          />
-        </FormControl>
-        <FormControl
-          sx={{
-            width: "50%",
-            margin: "1rem",
-          }}
-        >
-          <TextField
-            id="outlined-basic"
-            label="Message"
-            variant="outlined"
-            color="secondary"
+          >
+            <TextField
+              id="outlined-basic"
+              // label="Email"
+              variant="outlined"
+              color="secondary"
+              sx={{
+                width: "100%",
+                backgroundColor: "red",
+                border: "1px solid white",
+                borderRadius: "5px",
+                color: "white",
+              }}
+            />
+          </FormControl>
+          <FormControl
             sx={{
-              width: "100%",
+              width: "50%",
+              margin: "1rem",
+              color: "white",
             }}
-          />
-        </FormControl>
+          >
+            <TextField
+              id="outlined-basic"
+              // label="Message"
+              variant="outlined"
+              color="secondary"
+              sx={{
+                width: "100%",
+                backgroundColor: "red",
+                border: "1px solid white",
+                borderRadius: "5px",
+                color: "white",
+              }}
+            />
+          </FormControl>
 
-        <FormControl
-          sx={{
-            width: "50%",
-            margin: "1rem",
-          }}
-        >
-          <TextField
-            id="outlined-basic"
-            label="Phone"
-            variant="outlined"
-            color="secondary"
+          <FormControl
             sx={{
-              width: "100%",
+              width: "50%",
+              margin: "1rem",
             }}
-          />
-        </FormControl>
+          >
+            <TextField
+              id="outlined-basic"
+              // label="Phone"
+
+              variant="outlined"
+              color="secondary"
+              sx={{
+                width: "100%",
+                backgroundColor: "red",
+                border: "1px solid white",
+                borderRadius: "5px",
+              }}
+            />
+          </FormControl>
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 };
