@@ -1,7 +1,7 @@
 import { Box, ThemeProvider, Typography, createTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { GreettingText } from "./components/GreetingText";
-import { SideBar } from "./components/SideBar";
+import { SideBar } from "./components/TopBar";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { AboutMe } from "./pages/AboutMe";
 import { Projects } from "./pages/Projects";
@@ -80,11 +80,15 @@ function App() {
           {textDone ? (
             <Box>
               <Routes>
-                <Route index element={<AboutMe />} />
+                {/* <Route index element={<AboutMe />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<h1>404</h1>} />
+                <Route path="/" element={<AboutMe />} /> */}
                 <Route path="/" element={<AboutMe />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<h1>404</h1>} />
               </Routes>
             </Box>
           ) : (
