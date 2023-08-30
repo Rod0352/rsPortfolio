@@ -48,7 +48,6 @@ export const Contact = () => {
       ></Box>
       <Box
         sx={{
-          // backgroundColor: "primary.main",
           color: "#fff",
         }}
       >
@@ -73,14 +72,12 @@ export const Contact = () => {
         >
           <FormControl
             sx={{
-              // width: "100%",
               margin: "1rem",
               color: "white",
             }}
           >
             <TextField
               id="outlined-basic"
-              // label="Name"
               variant="outlined"
               color="info"
               sx={{
@@ -101,7 +98,6 @@ export const Contact = () => {
           >
             <TextField
               id="outlined-basic"
-              // label="Email"
               variant="outlined"
               color="secondary"
               sx={{
@@ -122,7 +118,6 @@ export const Contact = () => {
           >
             <TextField
               id="outlined-basic"
-              // label="Message"
               variant="outlined"
               color="secondary"
               sx={{
@@ -143,8 +138,6 @@ export const Contact = () => {
           >
             <TextField
               id="outlined-basic"
-              // label="Phone"
-
               variant="outlined"
               color="secondary"
               sx={{
