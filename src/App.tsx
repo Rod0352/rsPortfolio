@@ -1,11 +1,7 @@
 import { Box, ThemeProvider, Typography, createTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { GreettingText } from "./components/GreetingText";
-import { SideBar } from "./components/TopBar";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { AboutMe } from "./pages/AboutMe";
-import { Projects } from "./pages/Projects";
-import { Contact } from "./pages/Contact";
+import Main from "./main";
 
 const theme = createTheme({
   palette: {
@@ -53,18 +49,10 @@ const theme = createTheme({
 });
 
 function App() {
-  const [textDone, setTextDone] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setTextDone(true);
-    }, 3000);
-  }, []);
-
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        {textDone ? <SideBar /> : null}
+        {/* {textDone ? <SideBar /> : null} */}
         <Box
           sx={{
             bgcolor: "primary.main",
@@ -77,23 +65,23 @@ function App() {
             marginTop: "5rem",
           }}
         >
-          {textDone ? (
-            <Box>
-              <Routes>
-                {/* <Route index element={<AboutMe />} />
+          {/* {textDone ? ( */}
+          <Box>
+            <Routes>
+              {/* <Route index element={<AboutMe />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<h1>404</h1>} />
                 <Route path="/" element={<AboutMe />} /> */}
-                <Route path="/" element={<AboutMe />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={<h1>404</h1>} />
-              </Routes>
-            </Box>
-          ) : (
-            <GreettingText />
-          )}
+              <Route path="/" element={<Main />} />
+              {/* <Route path="/projects" element={<Projects />} />
+              <Route path="/contact" element={<Contact />} /> */}
+              <Route path="*" element={<h1>404</h1>} />
+            </Routes>
+          </Box>
+          {/* ) : ( */}
+          {/* <GreettingText /> */}
+          {/* )} */}
         </Box>
       </BrowserRouter>
       {/* </Box> */}
